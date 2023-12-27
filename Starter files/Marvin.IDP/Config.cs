@@ -26,7 +26,7 @@ public static class Config
                     AllowedGrantTypes = GrantTypes.Code,
                     RedirectUris =
                     {
-                        "https://localhost:7075/signin-oidc"
+                        "https://localhost:7184/signin-oidc"
                     },
                     AllowedScopes =
                     {
@@ -35,7 +35,8 @@ public static class Config
                     ClientSecrets = 
                     {
                         new Secret("secret".Sha256())
-                    }
+                    },
+                    RequireConsent = true
                 }
             };
 }
