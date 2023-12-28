@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Net.Http.Headers;
@@ -40,6 +41,11 @@ builder.Services.AddAuthentication( options =>
     // eg: SignedOutCallbackPath = "pathaftersignout"
     options.SaveTokens = true;
     options.GetClaimsFromUserInfoEndpoint = true;
+    // remove claim filters
+    options.ClaimActions.Remove("aud");
+    // remove claims
+    options.ClaimActions.DeleteClaim("sid");
+    options.ClaimActions.DeleteClaim("idp");
 });
 
 var app = builder.Build();
