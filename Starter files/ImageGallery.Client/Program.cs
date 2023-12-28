@@ -48,6 +48,13 @@ builder.Services.AddAuthentication( options =>
     options.ClaimActions.DeleteClaim("idp");
     options.Scope.Add("roles");
     options.ClaimActions.MapJsonKey("role", "role");
+
+    options.TokenValidationParameters = new ()
+    {
+        NameClaimType = "given_name",
+        // set which claim do we use for "User.IsInRole"
+        RoleClaimType = "role"
+    };
 });
 
 var app = builder.Build();
