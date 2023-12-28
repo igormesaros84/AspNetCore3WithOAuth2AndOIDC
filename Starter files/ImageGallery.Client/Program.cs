@@ -46,6 +46,8 @@ builder.Services.AddAuthentication( options =>
     // remove claims
     options.ClaimActions.DeleteClaim("sid");
     options.ClaimActions.DeleteClaim("idp");
+    options.Scope.Add("roles");
+    options.ClaimActions.MapJsonKey("role", "role");
 });
 
 var app = builder.Build();
