@@ -191,7 +191,7 @@ namespace ImageGallery.Client.Controllers
 
             foreach(var claim in User.Claims)
             {
-                userClaimsStringBuilder.Append($"Claim type {claim.Type} - Claim Value: {claim.Value}");   
+                userClaimsStringBuilder.Append($"\nClaim type {claim.Type} - Claim Value: {claim.Value}");   
             }
 
             // log token & claims
