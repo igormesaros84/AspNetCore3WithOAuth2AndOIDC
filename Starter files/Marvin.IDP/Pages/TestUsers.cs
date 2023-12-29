@@ -4,8 +4,6 @@
 
 using IdentityModel;
 using System.Security.Claims;
-using System.Text.Json;
-using Duende.IdentityServer;
 using Duende.IdentityServer.Test;
 
 namespace Marvin.IDP;
@@ -20,7 +18,7 @@ public class TestUsers
             {
                 new TestUser
                 {
-                    SubjectId = "be81e095-0597-4fea-97b6-53d0918664f5",
+                    SubjectId = "d860efca-22d9-47fd-8249-791ba61b07c7",
                     Username = "David",
                     Password = "password",
                     Claims =
@@ -32,7 +30,7 @@ public class TestUsers
                 },
                 new TestUser
                 {
-                    SubjectId = "1f68c6dc-c3cb-4ef2-83b3-dbca108fc799",
+                    SubjectId = "b7539694-97e7-4dfe-84da-b4256e1ff5c7",
                     Username = "Emma",
                     Password = "password",
                     Claims =
