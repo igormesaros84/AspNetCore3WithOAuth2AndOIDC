@@ -13,13 +13,15 @@ builder.Services.AddControllersWithViews()
 
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
+builder.Services.AddAccessTokenManagement();
+
 // create an HttpClient used for accessing the API
 builder.Services.AddHttpClient("APIClient", client =>
 {
     client.BaseAddress = new Uri(builder.Configuration["ImageGalleryAPIRoot"]);
     client.DefaultRequestHeaders.Clear();
     client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
-});
+}).AddUserAccessTokenHandler();
 
 builder.Services.AddAuthentication( options =>
 {
@@ -50,6 +52,7 @@ builder.Services.AddAuthentication( options =>
     options.ClaimActions.DeleteClaim("sid");
     options.ClaimActions.DeleteClaim("idp");
     options.Scope.Add("roles");
+    options.Scope.Add("imagegalleryapi.fullaccess");
     options.ClaimActions.MapJsonKey("role", "role");
 
     options.TokenValidationParameters = new ()
